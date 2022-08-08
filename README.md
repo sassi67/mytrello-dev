@@ -16,6 +16,7 @@ At this time you are in the container. Type:
  - npm i express@4.18.1
  - npm i nodemon@2.0.11
  - exit
+
 Remove the mytrello-pre image
  - docker rmi mytrello-pre
 
@@ -24,10 +25,11 @@ These will be used to create a new Node container in which the dependencies to o
 
 ## Step. 2 construction of the final Node container
 Change the package.json in this way:
-"scripts": {
+`"scripts": {
     // other stuffs
-    "start": "nodemon L --inspect=0.0.0.0 server.js"
+    "start": "nodemon -L --inspect=0.0.0.0 server.js"
 },
+`
  - docker build -t mytrello-dev -f Dockerfile.dev . 
  - docker run -d -p 8099:3000 -v ${PWD}:/mytrello mytrello-dev
 
